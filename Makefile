@@ -10,20 +10,30 @@ SRCS	= test.c \
 
 OBJS	= $(addprefix, src/$(SRCS:.c=.o))
 
+LIB_DIR	= libft/
+
 #build
 all 	: $(NAME)
 
+
 $(NAME)	: $(OBJS)
-			ar -rcs $@ $^
-%.o		:  %.c
-			$(CC) -c $< -o $(<:.c=.o)
+				ar -rcs $@ $^
 
-clean	: $(RM) $(OBJS)
+%.o		: %.c
+				$(CC) -c $< -o $(<:.c=.o)
 
+libft	:
+				make -C $(LIB_DIR) all
+
+clean	:
+				$(RM) $(OBJS)
+				make -C $(LIB_DIR) clean
 
 fclean	: clean
-			$(RM) $(NAME)
+				$(RM) $(NAME)
+				make -C $(LIB_DIR) fclean
 
 re		: fclean all
 
-.PHONY : all clean fclean re
+
+.PHONY : all libft clean fclean re
