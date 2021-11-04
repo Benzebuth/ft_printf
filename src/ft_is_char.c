@@ -1,29 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ft_is_char.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bcolin <bcolin@student.42lausanne.ch>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/04 18:11:31 by bcolin            #+#    #+#             */
-/*   Updated: 2021/11/04 21:04:46 by bcolin           ###   ########          */
+/*   Created: 2021/11/04 20:49:07 by bcolin            #+#    #+#             */
+/*   Updated: 2021/11/04 21:07:36 by bcolin           ###   ########          */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
+#include "ft_printf.h"
 
-//include
-# include <stdarg.h>
-# include "../libft/libft.h"
+void	ft_is_char(va_list arg_list)
+{
+	char	c;
+	c = (char)va_arg(arg_list, int);
+	ft_putchar_fd(c, 1);
+}
 
-// !!!!! A DELETE avant de push
-#include <stdio.h>
+int	ft_is_string(va_list arg_list)
+{
+	char	*str;
+	int		len;
 
-//prototype
-int	    ft_printf(const char *str, ...);
-void	ft_is_char(va_list arg_list);
-int	    ft_is_string(va_list arg_list);
-
-
-#endif
+	str = va_arg(arg_list, char *);
+	ft_putstr_fd(str, 1);
+	len = ft_strlen(str);
+	return (len);
+}

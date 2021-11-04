@@ -5,19 +5,22 @@ CFLAGS	= -Wall -Werror -Wextra
 
 RM		= rm -f
 
-SRCS	= test.c \
-		  ft_printf.c
+SRCS	= ft_printf.c \
+		  ft_is_char.c
 
-OBJS	= $(addprefix, src/$(SRCS:.c=.o))
+OBJS	= $(addprefix src/, $(SRCS:.c=.o))
 
 LIB_DIR	= libft/
+
+LIBFT_OBJS = libft/*.o
 
 #build
 all 	: $(NAME)
 
 
-$(NAME)	: $(OBJS)
-				ar -rcs $@ $^
+$(NAME)	: libft $(OBJS)
+				make -C $(LIB_DIR) all
+				ar -rcs $@ $(OBJS) $(LIBFT_OBJS)
 
 %.o		: %.c
 				$(CC) -c $< -o $(<:.c=.o)
