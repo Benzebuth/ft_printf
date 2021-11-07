@@ -6,7 +6,8 @@ CFLAGS	= -Wall -Werror -Wextra
 RM		= rm -f
 
 SRCS	= ft_printf.c \
-		  ft_is_char.c
+		  ft_is_char.c \
+		  ft_putnbr_base.c
 
 OBJS	= $(addprefix src/, $(SRCS:.c=.o))
 

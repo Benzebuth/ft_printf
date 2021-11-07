@@ -4,18 +4,24 @@ int	main(void)
 {
 	int	count_print = 0;
 	char	chaar = 'b';
+	char *strtest = "salut";
 
 	count_print = ft_printf("%%:%%");
 	ft_printf("\n");
-	printf("count_print valeur:%i\n", count_print);
+	printf("count_print:%i\n", count_print);
 
 	count_print = ft_printf("c:%c", chaar);
 	ft_printf("\n");
-	printf("count_print valeur:%i\n", count_print);
+	printf("count_print:%i\n", count_print);
 
 	count_print = ft_printf("s:%s", "bonjour");
 	ft_printf("\n");
-	printf("count_print valeur:%i\n", count_print);
+	printf("count_print:%i\n", count_print);
+
+	count_print = ft_printf("p:%p", strtest);
+	ft_printf("\n");
+	printf("original:p:%p\n", strtest);
+	printf("count_print:%i\n", count_print);
 
 
 /*

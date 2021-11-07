@@ -6,7 +6,7 @@
 /*   By: bcolin <bcolin@student.42lausanne.ch>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/04 18:17:22 by bcolin            #+#    #+#             */
-/*   Updated: 2021/11/04 21:07:07 by bcolin           ###   ########          */
+/*   Updated: 2021/11/07 15:45:02 by bcolin           ###   ########          */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,38 +33,38 @@ int	ft_extract_type(const char *str, size_t *i, va_list arg_list)
 		len = ft_is_string(arg_list);
 		return (len);
 	}
+	else if (str[(*i)] == 'p')
+	{
+		ft_putstr_fd("0x", 1);
+		len = ft_is_pointer(arg_list) + 2;
+		return (len);
+	}
 
 
 
 
 
-
-	if (str[(*i)] == 'p')
+	else if (str[(*i)] == 'd')
 	{
 		ft_putchar_fd(str[*i], 1);
 		return (1);
 	}
-	if (str[(*i)] == 'd')
+	else if (str[(*i)] == 'i')
 	{
 		ft_putchar_fd(str[*i], 1);
 		return (1);
 	}
-	if (str[(*i)] == 'i')
+	else if (str[(*i)] == 'u')
 	{
 		ft_putchar_fd(str[*i], 1);
 		return (1);
 	}
-	if (str[(*i)] == 'u')
+	else if (str[(*i)] == 'x')
 	{
 		ft_putchar_fd(str[*i], 1);
 		return (1);
 	}
-	if (str[(*i)] == 'x')
-	{
-		ft_putchar_fd(str[*i], 1);
-		return (1);
-	}
-	if (str[(*i)] == 'X')
+	else if (str[(*i)] == 'X')
 	{
 		ft_putchar_fd(str[*i], 1);
 		return (1);
