@@ -6,7 +6,7 @@
 /*   By: bcolin <bcolin@student.42lausanne.ch>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/04 18:11:31 by bcolin            #+#    #+#             */
-/*   Updated: 2021/11/08 16:23:55 by bcolin           ###   ########          */
+/*   Updated: 2021/11/08 16:32:48 by bcolin           ###   ########          */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,8 @@
 # include "../libft/libft.h"
 
 //prototype
-int	    ft_printf(const char *str, ...);
-int	    ft_count_percent(const char *str);
+int		ft_printf(const char *str, ...);
+int		ft_count_percent(const char *str);
 void	ft_putchar_count(char c, int *count_print);
 void	ft_putstr_count(const char *str, int *count_print);
 void	ft_pointer_address(void *ptr, int *count_print);

@@ -1,45 +1,91 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   test.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bcolin <bcolin@student.42lausanne.ch>      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/11/08 16:33:25 by bcolin            #+#    #+#             */
+/*   Updated: 2021/11/08 16:38:47 by bcolin           ###   ########          */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "./src/ft_printf.h"
+#include <stdio.h>
 
-int	main(void)
+int	main()
 {
-	int	count_print = 0;
-	char	chaar = 'b';
-	char *strtest = "salut";
+	int	v;
+	int	my_v;
 
-	count_print = ft_printf("%%:%%");
-	ft_printf("\n");
-	printf("count_print:%i\n", count_print);
+	ft_printf("\n----------------STRING_TEST----------------\n");
 
-	count_print = ft_printf("c:%c", chaar);
-	ft_printf("\n");
-	printf("count_print:%i\n", count_print);
+	v = printf("Une string : %s", "Mama la string\n");
+	my_v = ft_printf("Mon string : %s", "Mama la string\n");
+	printf("Value = %d || My value = %d\n", v, my_v);
+	v = printf(" %s %s %s %s %s \n", " - ", "", "4", "", "2 ");
+	my_v = ft_printf(" %s %s %s %s %s \n", " - ", "", "4", "", "2 ");
+	printf("Value = %d || My value = %d\n", v, my_v);
 
-	count_print = ft_printf("s:%s", "bonjour");
-	ft_printf("\n");
-	printf("count_print:%i\n", count_print);
+	ft_printf("\n-----------------NORMAL_TEST----------------\n");
+	v = printf("Print moi mes premiers tests chien\n");
+	my_v = ft_printf("Print moi mes premiers tests chien\n");
+	printf("Value = %d || My value = %d\n", v, my_v);
 
-	count_print = ft_printf("p:%p", strtest);
-	ft_printf("\n");
-	printf("original:p:%p\n", strtest);
-	printf("count_print:%i\n", count_print);
+	ft_printf("\n------------------CHAR_TEST------------------\n");
 
+	v = printf("Une char : %c\n", 'a');
+	my_v = ft_printf("Mon char : %c\n", 'a');
+	printf("Value = %d || My value = %d\n", v, my_v);
 
-/*
-	int	printf_recu = 0;
-	char *str = "coucou";
-	print_int(5, 7, 4, 2, 3, 1);
+	ft_printf("\n--------------------INT_TEST------------------\n");
 
-	printf_recu = printf("strlen:%zu", ft_strlen(str));
-	printf("\nprintf_recu:%i\n", printf_recu);
+	v = printf("Un int : %i\n", -56854);
+	my_v = ft_printf("My int : %i\n", -56854);
+	printf("Value = %d || My value = %d\n", v, my_v);
 
-	ft_printf("hello");
-	ft_printf("hello %c\n");
-	ft_printf("hello %s\n");
-	ft_printf("hello %p\n");
-	ft_printf("hello %i\n");
-	ft_printf("hello %u\n");
-	ft_printf("hello %x\n");
-	ft_printf("hello %%\n");
-*/
+	ft_printf("\n-------------------DOUBLE_TEST----------------\n");
+
+	v = printf("Un double : %d\n", -5665);
+	my_v = ft_printf("My double : %d\n", -5665);
+	printf("Value = %d || My value = %d\n", v, my_v);
+
+	ft_printf("\n-----------------UNSIGNED_TEST------------------\n");
+
+	v = printf("Un unsigned : %u\n", 1248);
+	my_v = ft_printf("My unsigned : %u\n", 1248);
+	printf("Value = %d || My value = %d\n", v, my_v);
+
+	ft_printf("\n---------------------HEXA_TEST------------------\n");
+
+	v = printf("Un entier en hexa : %x\n", 25698);
+	my_v = ft_printf("My entier en hexa : %x\n", 25698);
+	printf("Value = %d || My value = %d\n", v, my_v);
+
+	ft_printf("\n--------------------PURCENT_TEST----------------\n");
+
+	v = printf("Un purcent : %%%%\n");
+	my_v = ft_printf("My purcent : %%%%\n");
+	printf("Value = %d || My value = %d\n", v, my_v);
+
+	ft_printf("\n---------------------MIX_TEST-------------------\n");
+
+	v = printf("Mix : %d et puis %c\n", 123, 'z');
+	my_v = ft_printf("Mix : %d et puis %c\n", 123, 'z');
+	printf("Value = %d || My value = %d\n", v, my_v);
+
+	v = printf("Mix2 : %%%d%%%i\n", 123, 456);
+	my_v = ft_printf("Mix2 : %%%d%%%i\n", 123, 456);
+	printf("Value = %d || My value = %d\n", v, my_v);
+
+	ft_printf("\n-------------------POINTER_TEST---------------\n");
+
+	char *str = NULL;
+	v = printf(" NULL %s NULL \n", str);
+	my_v = ft_printf(" NULL %s NULL \n", str);
+	printf("Value = %d || My value = %d\n", v, my_v);
+
+	ft_printf("\n--------------------------------------------\n");
+
 	return (0);
 }

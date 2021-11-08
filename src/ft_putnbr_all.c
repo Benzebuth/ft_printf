@@ -6,7 +6,7 @@
 /*   By: bcolin <bcolin@student.42lausanne.ch>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/04 21:21:30 by bcolin            #+#    #+#             */
-/*   Updated: 2021/11/08 16:23:05 by bcolin           ###   ########          */
+/*   Updated: 2021/11/08 16:30:46 by bcolin           ###   ########          */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@ void	ft_putnbr_unsigned_count(unsigned int nb, int *count_print)
 	else
 		ft_putchar_count(u_nb + '0', count_print);
 }
-
 
 void	ft_putnbr_int_count(int nb_recu, int *count_print)
 {

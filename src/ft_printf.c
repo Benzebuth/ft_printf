@@ -6,7 +6,7 @@
 /*   By: bcolin <bcolin@student.42lausanne.ch>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/04 18:17:22 by bcolin            #+#    #+#             */
-/*   Updated: 2021/11/08 16:10:11 by bcolin           ###   ########          */
+/*   Updated: 2021/11/08 16:38:13 by bcolin           ###   ########          */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,11 @@ static int	ft_extract_type(va_list arg_list, const char *str, int count)
 	else if (str[count] == UNSIGNED)
 		ft_putnbr_unsigned_count(va_arg(arg_list, unsigned int), &nb_written);
 	else if (str[count] == HEXA)
-		ft_putnbr_base(va_arg(arg_list, unsigned int), &nb_written, BASE_HEXA);
+		ft_putnbr_base(va_arg(arg_list, unsigned int), &nb_written,
+			HEXA_BASE);
 	else if (str[count] == HEXA_UPPER)
-		ft_putnbr_base(va_arg(arg_list, unsigned int), &nb_written, BASE_HEXA_UPPER);
+		ft_putnbr_base(va_arg(arg_list, unsigned int), &nb_written,
+			HEXA_BASE_UPPER);
 	else if (str[count] == POINTER)
 		ft_pointer_address(va_arg(arg_list, void *), &nb_written);
 	return (nb_written);
