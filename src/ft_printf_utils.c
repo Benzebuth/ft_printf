@@ -6,7 +6,7 @@
 /*   By: bcolin <bcolin@student.42lausanne.ch>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/04 20:49:07 by bcolin            #+#    #+#             */
-/*   Updated: 2021/11/08 16:17:58 by bcolin           ###   ########          */
+/*   Updated: 2021/11/08 21:34:26 by bcolin           ###   ########          */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,7 @@ void	ft_putstr_count(const char *str, int *count_print)
 
 void	ft_pointer_address(void *ptr, int *count_print)
 {
-	ft_putstr_count("0x", count_print);
+	write(1, "0x", 2);
 	ft_putnbr_base((long)ptr, count_print, HEXA_BASE);
+	*count_print += 2;
 }

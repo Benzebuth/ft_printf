@@ -6,7 +6,7 @@
 /*   By: bcolin <bcolin@student.42lausanne.ch>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/04 21:21:30 by bcolin            #+#    #+#             */
-/*   Updated: 2021/11/08 16:30:46 by bcolin           ###   ########          */
+/*   Updated: 2021/11/08 21:48:54 by bcolin           ###   ########          */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void	ft_putnbr_int_count(int nb_recu, int *count_print)
 		ft_putchar_count(nb + '0', count_print);
 }
 
-int	ft_nbrlen_hexa(int nb)
+int	ft_nbrlen_hexa(unsigned long nb)
 {
 	int	count;
 
@@ -65,14 +65,14 @@ void	ft_putnbr_base(unsigned long nb, int *count_print, char *base)
 {
 	size_t	size_base;
 
-	size_base = ft_strlen(base);
 	if (*count_print == 0)
 		*count_print += ft_nbrlen_hexa(nb);
+	size_base = ft_strlen(base);
 	if (nb >= size_base)
 	{
 		ft_putnbr_base(nb / size_base, count_print, base);
 		ft_putnbr_base(nb % size_base, count_print, base);
 	}
 	else
-		ft_putchar_fd(base[nb], 1);
+		write(1, &base[nb], 1);
 }
