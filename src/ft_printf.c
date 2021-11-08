@@ -6,92 +6,55 @@
 /*   By: bcolin <bcolin@student.42lausanne.ch>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/04 18:17:22 by bcolin            #+#    #+#             */
-/*   Updated: 2021/11/07 15:45:02 by bcolin           ###   ########          */
+/*   Updated: 2021/11/08 16:10:11 by bcolin           ###   ########          */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_extract_type(const char *str, size_t *i, va_list arg_list)
+static int	ft_extract_type(va_list arg_list, const char *str, int count)
 {
-	int	len;
+	int	nb_written;
 
-	len = 0;
-	*i += 1;
-	if (str[(*i)] == '%')
-	{
-		ft_putchar_fd(str[*i], 1);
-		return (1);
-	}
-	else if (str[(*i)] == 'c')
-	{
-		ft_is_char(arg_list);
-		return (1);
-	}
-	else if (str[(*i)] == 's')
-	{
-		len = ft_is_string(arg_list);
-		return (len);
-	}
-	else if (str[(*i)] == 'p')
-	{
-		ft_putstr_fd("0x", 1);
-		len = ft_is_pointer(arg_list) + 2;
-		return (len);
-	}
-
-
-
-
-
-	else if (str[(*i)] == 'd')
-	{
-		ft_putchar_fd(str[*i], 1);
-		return (1);
-	}
-	else if (str[(*i)] == 'i')
-	{
-		ft_putchar_fd(str[*i], 1);
-		return (1);
-	}
-	else if (str[(*i)] == 'u')
-	{
-		ft_putchar_fd(str[*i], 1);
-		return (1);
-	}
-	else if (str[(*i)] == 'x')
-	{
-		ft_putchar_fd(str[*i], 1);
-		return (1);
-	}
-	else if (str[(*i)] == 'X')
-	{
-		ft_putchar_fd(str[*i], 1);
-		return (1);
-	}
-	return (0);
+	nb_written = 0;
+	if (str[count] == PERCENT)
+		ft_putchar_count(PERCENT, &nb_written);
+	else if (str[count] == CHAR)
+		ft_putchar_count(va_arg(arg_list, int), &nb_written);
+	else if (str[count] == STRING)
+		ft_putstr_count(va_arg(arg_list, char *), &nb_written);
+	else if (str[count] == DECIMAL)
+		ft_putnbr_int_count(va_arg(arg_list, int), &nb_written);
+	else if (str[count] == INT)
+		ft_putnbr_int_count(va_arg(arg_list, int), &nb_written);
+	else if (str[count] == UNSIGNED)
+		ft_putnbr_unsigned_count(va_arg(arg_list, unsigned int), &nb_written);
+	else if (str[count] == HEXA)
+		ft_putnbr_base(va_arg(arg_list, unsigned int), &nb_written, BASE_HEXA);
+	else if (str[count] == HEXA_UPPER)
+		ft_putnbr_base(va_arg(arg_list, unsigned int), &nb_written, BASE_HEXA_UPPER);
+	else if (str[count] == POINTER)
+		ft_pointer_address(va_arg(arg_list, void *), &nb_written);
+	return (nb_written);
 }
 
 int	ft_printf(const char *str, ...)
 {
 	va_list	arg_list;
-	int	count;
-	size_t	i;
+	int		count_send;
+	int		i;
 
-	count = 0;
+	count_send = 0;
 	va_start(arg_list, str);
+	count_send = ft_count_percent(str);
 	i = -1;
 	while (str[++i])
 	{
 		if (str[i] == '%')
-		{
-			count += ft_extract_type(str, &i, arg_list);
-		}
+			count_send += ft_extract_type(arg_list, str, ++i);
 		else
-		{
 			ft_putchar_fd(str[i], 1);
-			count++;
-		}
 	}
-	return (count);
+	va_end(arg_list);
+	return (count_send);
 }
